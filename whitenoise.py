@@ -10,21 +10,9 @@ class WhiteNoise:
 		self.samplerate = samplerate
 		self.filename = filename
 
-
 	def generate(self):
-		x = []
-		l = []
-
-		x.append(np.random.random(size = self.samples))
-
-		for i in x:
-			for j in i:
-				l.append(j)
-
-		l = np.array(l)
-
-		wavio.write(self.filename, l, self.samplerate, sampwidth=2)
-
+		x = np.random.random(size = self.samples)
+		wavio.write(self.filename, x, self.samplerate, sampwidth=2)
 
 	def playNoise(self):
 		song = AudioSegment.from_wav(self.filename)
